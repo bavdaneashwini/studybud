@@ -14,12 +14,6 @@ from .forms import UserForm
 # Create your views here.
 
 
-# rooms = [
-    # {'id':1,'name':'Lets Learn Python'},
-    # {'id':2,'name':'Design with me'},
-    # {'id':3,'name':'Fronted Developers'},
-# ]
-
 def loginPage(request):
     page = 'login'
     if request.user.is_authenticated:
@@ -111,11 +105,6 @@ def createRoom(request):
             name = request.POST.get('name'),
             description = request.POST.get('description')
         )
-        # form = RoomForm(request.POST)
-        # if form.is_valid():
-            # room = form.save(commit=False)
-            # room.host = request.user
-            # room.save()
         return redirect('home')
     context = {'form': form,'topics': topics}
     return render(request,'base/room_template.html',context)
